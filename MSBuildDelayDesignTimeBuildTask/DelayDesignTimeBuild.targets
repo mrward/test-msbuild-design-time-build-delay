@@ -3,9 +3,10 @@
 
 	<PropertyGroup>
 		<DesignTimeBuildDelayTime Condition="'$(DesignTimeBuildDelayTime)'==''">30000</DesignTimeBuildDelayTime>
+		<ResolveAssemblyReferencesDependsOn>$(ResolveAssemblyReferencesDependsOn);_DesignTimeBuildDelay</ResolveAssemblyReferencesDependsOn>
 	</PropertyGroup>
 
-	<Target Name="_DesignTimeBuildDelay" BeforeTargets="BeforeResolveReferences" Condition="'$(DesignTimeBuild)' == 'true'" >
+	<Target Name="_DesignTimeBuildDelay" Condition="'$(DesignTimeBuild)' == 'true'" >
 		<DelayDesignTimeBuild Delay="$(DesignTimeBuildDelayTime)" />
 	</Target>
 </Project>
