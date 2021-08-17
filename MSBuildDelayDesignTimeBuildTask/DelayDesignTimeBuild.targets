@@ -1,0 +1,11 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<UsingTask TaskName="MSBuildDelayDesignTimeBuildTask.DelayDesignTimeBuild" AssemblyFile="MSBuildDelayDesignTimeBuildTask.dll" />
+
+	<PropertyGroup>
+		<DesignTimeBuildDelayTime Condition="'$(DesignTimeBuildDelayTime)'==''">30000</DesignTimeBuildDelayTime>
+	</PropertyGroup>
+
+	<Target Name="_DesignTimeBuildDelay" BeforeTargets="BeforeResolveReferences" Condition="'$(DesignTimeBuild)' == 'true'" >
+		<DelayDesignTimeBuild Delay="$(DesignTimeBuildDelayTime)" />
+	</Target>
+</Project>
